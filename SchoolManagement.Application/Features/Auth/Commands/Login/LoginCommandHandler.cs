@@ -34,7 +34,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, AuthResponse>
             throw new UnauthorizedAccessException("Usuario inactivo");
 
         // Verificar contraseña usando el servicio
-        if (!_passwordHasher.VerifyPassword(request.Password, user.PasswordHash)) // 👈 CAMBIAR ESTA LÍNEA
+        if (!_passwordHasher.VerifyPassword(request.Password, user.PasswordHash))
             throw new UnauthorizedAccessException("Credenciales inválidas");
 
         // Actualizar último login
