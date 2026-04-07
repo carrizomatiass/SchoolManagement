@@ -50,13 +50,13 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddAuthorization();
-
+    
 // CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorApp", policy =>
     {
-        policy.WithOrigins("https://localhost:7253", "http://localhost:5000")
+        policy.WithOrigins("https://localhost:7253", "http://localhost:5000", "http://localhost:3000", "https://localhost:3000")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -79,9 +79,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowBlazorApp");
 
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
-app.UseCors("AllowBlazorClient");
 
 app.UseAuthentication();
 app.UseAuthorization();
